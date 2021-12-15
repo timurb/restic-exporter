@@ -11,4 +11,4 @@ FROM restic/restic
 WORKDIR /app
 COPY --from=build /app/bin/restic-exporter /app
 
-ENTRYPOINT /app/restic-exporter
+ENTRYPOINT /bin/sh
