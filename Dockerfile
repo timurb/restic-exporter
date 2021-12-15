@@ -8,7 +8,8 @@ RUN go build -o bin/restic-exporter src/*.go
 
 
 FROM restic/restic
-WORKDIR /app
-COPY --from=build /app/bin/restic-exporter /app
+WORKDIR /stats
+COPY --from=build /app/bin/restic-exporter /usr/bin
 
-ENTRYPOINT /bin/sh
+ENTRYPOINT ["/bin/sh", "-c"]
+CMD ["/usr/bin/restic"]
